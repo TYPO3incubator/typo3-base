@@ -58,7 +58,7 @@ See the [full documentation](https://dkd-dobberkau.github.io/typo3-base/) for en
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for build instructions and development setup.
 
-Based on prior work by Martin Helmich (`docker-typo3`, `docker-typo3-cloud`). Environment mapping pattern inspired by [Andre Spindler's TYPO3 distribution template](https://gitlab.com/gitlab-org/project-templates/typo3-distribution).
+Based on prior work by Martin Helmich (`docker-typo3`, `docker-typo3-cloud`). Environment mapping pattern inspired by [André Buchmann's TYPO3 distribution template](https://gitlab.com/gitlab-org/project-templates/typo3-distribution).
 
 ## License
 
