@@ -12,9 +12,9 @@ debian:bookworm-slim + Sury PHP
   [fpm]      [nginx]
 :8.3-fpm   :8.3-nginx  <- build targets (--target fpm / --target nginx)
     |         |
-    |   Dockerfile.demo    -> dkd-dobberkau/demo:{TYPO3_VERSION}
+    |   Dockerfile.demo    -> typo3/demo:{TYPO3_VERSION}
     |
-Dockerfile.contrib -> dkd-dobberkau/contrib:{PHP_VERSION}
+Dockerfile.contrib -> typo3/contrib:{PHP_VERSION}
 ```
 
 ## Variants
@@ -63,5 +63,5 @@ The optional `TYPO3_DEMO_CONTENT=introduction` build arg adds the Introduction P
 | `PHP_VERSION` | `8.3` | Both Dockerfiles, Makefile |
 | `TYPO3_VERSION` | `13` | Dockerfile.demo, Makefile |
 | `TYPO3_DEMO_CONTENT` | `""` | Dockerfile.demo (set to `introduction` for intro variant) |
-| `REGISTRY` | `ghcr.io/dkd-dobberkau` | Makefile |
+| `REGISTRY` | `ghcr.io/typo3` | Makefile |
 | `HTTP_PORT` | `8080` | Makefile (demo) |

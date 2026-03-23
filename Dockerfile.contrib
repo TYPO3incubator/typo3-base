@@ -14,7 +14,7 @@
 #   1.) Now you need the `docker-compose.contrib-public.yml` file, get it from
 #       this repository:
 #
-#       $> wget https://raw.githubusercontent.com/dkd-dobberkau/typo3-base/refs/heads/main/docker-compose.contrib-public.yml
+#       $> wget https://raw.githubusercontent.com/TYPO3incubator/typo3-base/refs/heads/main/docker-compose.contrib-public.yml
 #
 #   2.) Now start the docker framework:
 #
@@ -35,7 +35,7 @@ ARG PHP_VERSION=8.2
 # -----------------------------------------------------------------------------
 # Stage 1: Install TYPO3 via Composer
 # -----------------------------------------------------------------------------
-FROM ghcr.io/dkd-dobberkau/base:${PHP_VERSION}-nginx AS build
+FROM ghcr.io/typo3/base:${PHP_VERSION}-nginx AS build
 
 LABEL org.opencontainers.image.title="TYPO3 Contribution Image"
 LABEL org.opencontainers.image.description="Ready-to-run TYPO3 main contribution setup with Apache"

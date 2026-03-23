@@ -16,7 +16,7 @@ services:
   web:
     # IMPORTANT: This is the BUILD file for the repository. It requires build artifacts.
     # Check out `docker-compose.contrib-public.yml` to use for your boilerplate. It uses:
-    # image: dkd-dobberkau/contrib
+    # image: typo3/contrib
     build:
       context: .
       dockerfile: Dockerfile.contrib

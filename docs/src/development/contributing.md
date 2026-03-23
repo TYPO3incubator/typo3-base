@@ -11,7 +11,7 @@ Contributions are welcome! This guide explains how to set up the development env
 ## Getting Started
 
 ```bash
-git clone https://github.com/dkd-dobberkau/typo3-base.git
+git clone https://github.com/TYPO3incubator/typo3-base.git
 cd typo3-base
 ```
 

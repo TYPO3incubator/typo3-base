@@ -4,11 +4,11 @@
 
 | Image | Tag | Supported |
 |-------|-----|-----------|
-| dkd-dobberkau/base | 8.3-nginx | Yes |
-| dkd-dobberkau/base | 8.4-nginx | Yes |
-| dkd-dobberkau/base | 8.2-nginx | Yes |
-| dkd-dobberkau/demo | 13 | Yes |
-| dkd-dobberkau/demo | 14 | Yes |
+| typo3/base | 8.3-nginx | Yes |
+| typo3/base | 8.4-nginx | Yes |
+| typo3/base | 8.2-nginx | Yes |
+| typo3/demo | 13 | Yes |
+| typo3/demo | 14 | Yes |
 
 ## Reporting a Vulnerability
 

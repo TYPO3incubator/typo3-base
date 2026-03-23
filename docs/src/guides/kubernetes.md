@@ -1,13 +1,13 @@
 # Kubernetes
 
-> **Coming Soon** — A Helm chart is planned. See the [project roadmap](https://github.com/dkd-dobberkau/typo3-base/blob/main/TODO.md) for progress.
+> **Coming Soon** — A Helm chart is planned. See the [project roadmap](https://github.com/TYPO3incubator/typo3-base/blob/main/TODO.md) for progress.
 
 ## Recommended Setup
 
 For Kubernetes deployments, use the **FPM variant** of the base image:
 
 ```dockerfile
-FROM ghcr.io/dkd-dobberkau/base:8.3-fpm
+FROM ghcr.io/typo3/base:8.3-fpm
 COPY --from=build --chown=typo3:typo3 /app /var/www/html
 ```
 

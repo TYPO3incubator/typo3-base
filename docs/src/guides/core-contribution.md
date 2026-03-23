@@ -1,6 +1,6 @@
 # Core Contribution
 
-`dkd-dobberkau/contrib` is a ready-to-run environment for contributing to the TYPO3 Core. It uses the FPM base image with a host-side Git checkout of the TYPO3 mono repository, set up as a Composer-based project.
+`typo3/contrib` is a ready-to-run environment for contributing to the TYPO3 Core. It uses the FPM base image with a host-side Git checkout of the TYPO3 mono repository, set up as a Composer-based project.
 
 ## Available Tags
 
@@ -25,7 +25,7 @@ Replace `YOUR_USERNAME` with your [my.typo3.org](https://my.typo3.org) username.
 ### 2. Download the Compose File
 
 ```bash
-curl -O https://raw.githubusercontent.com/dkd-dobberkau/typo3-base/main/docker-compose.contrib.yml
+curl -O https://raw.githubusercontent.com/TYPO3incubator/typo3-base/main/docker-compose.contrib.yml
 ```
 
 ### 3. Start the Environment

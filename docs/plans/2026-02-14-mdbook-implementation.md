@@ -29,8 +29,8 @@ src = "src"
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
-git-repository-url = "https://github.com/dkd-dobberkau/typo3-base"
-edit-url-template = "https://github.com/dkd-dobberkau/typo3-base/edit/main/docs/{path}"
+git-repository-url = "https://github.com/TYPO3incubator/typo3-base"
+edit-url-template = "https://github.com/TYPO3incubator/typo3-base/edit/main/docs/{path}"
 ```
 
 **Step 2: Create `docs/src/SUMMARY.md`**
@@ -298,7 +298,7 @@ git commit -m "ci: add GitHub Actions workflow for MDBook deployment"
 Keep: badge, one-paragraph overview, images overview (3 images, 1-liner each), quick start (`docker compose up`), architecture ASCII diagram, "Building Locally" with `make build-all` / `make test`, license.
 
 Replace detailed sections (env vars, volumes, extensions, Dockerfile examples, contrib setup) with links like:
-`See the [full documentation](https://dkd-dobberkau.github.io/typo3-base/) for detailed guides.`
+`See the [full documentation](https://typo3incubator.github.io/typo3-base/) for detailed guides.`
 
 Target: ~100 lines (down from ~329).
 
@@ -309,12 +309,12 @@ Replace body with a short redirect:
 ```markdown
 # Contributing
 
-See the [Contributing Guide](https://dkd-dobberkau.github.io/typo3-base/development/contributing.html) in the documentation.
+See the [Contributing Guide](https://typo3incubator.github.io/typo3-base/development/contributing.html) in the documentation.
 
 For a quick start:
 
 \`\`\`bash
-git clone https://github.com/dkd-dobberkau/typo3-base.git
+git clone https://github.com/TYPO3incubator/typo3-base.git
 cd typo3-base
 make build-all
 make test

@@ -1,6 +1,6 @@
 # Demo Image
 
-`dkd-dobberkau/demo` is a pre-installed TYPO3 for demos, evaluation, and onboarding. Includes a complete TYPO3 setup ready to start.
+`typo3/demo` is a pre-installed TYPO3 for demos, evaluation, and onboarding. Includes a complete TYPO3 setup ready to start.
 
 ## Available Tags
 

@@ -23,7 +23,7 @@ Create a `Dockerfile` in your TYPO3 project:
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM ghcr.io/dkd-dobberkau/base:8.3-nginx AS base
+FROM ghcr.io/typo3/base:8.3-nginx AS base
 FROM composer:2 AS build
 
 WORKDIR /app
@@ -41,8 +41,8 @@ COPY --from=build --chown=typo3:typo3 /app /var/www/html
 Copy `docker-compose.prod.yml` and `.env.prod.example` from this repository into your project:
 
 ```bash
-curl -O https://raw.githubusercontent.com/dkd-dobberkau/typo3-base/main/docker-compose.prod.yml
-curl -O https://raw.githubusercontent.com/dkd-dobberkau/typo3-base/main/.env.prod.example
+curl -O https://raw.githubusercontent.com/TYPO3incubator/typo3-base/main/docker-compose.prod.yml
+curl -O https://raw.githubusercontent.com/TYPO3incubator/typo3-base/main/.env.prod.example
 ```
 
 ## Step 3: Configure Environment
@@ -80,7 +80,7 @@ In `docker-compose.prod.yml`, uncomment the `build` section for the `web` servic
 
 ```yaml
 web:
-  # image: ghcr.io/dkd-dobberkau/base:${PHP_VERSION:-8.3}-nginx
+  # image: ghcr.io/typo3/base:${PHP_VERSION:-8.3}-nginx
   build:
     context: .
     dockerfile: Dockerfile
