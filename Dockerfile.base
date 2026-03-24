@@ -5,7 +5,7 @@
 # This image does NOT contain TYPO3 itself. It provides the runtime environment.
 # Build your project image on top of this:
 #
-#   FROM ghcr.io/typo3/base:8.3-nginx
+#   FROM ghcr.io/typo3incubator/typo3-base:8.3-nginx
 #   COPY --from=build /app /var/www/html
 #
 # Variants available (--target):

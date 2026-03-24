@@ -10,7 +10,7 @@ Multi-architecture support: `linux/amd64` + `linux/arm64` (Apple Silicon).
 
 | Image | Purpose |
 |-------|---------|
-| [`typo3/base`](getting-started/base-image.md) | Slim runtime image with PHP-FPM — build your project on top |
+| [`typo3incubator/typo3-base`](getting-started/base-image.md) | Slim runtime image with PHP-FPM — build your project on top |
 | [`typo3/demo`](getting-started/demo-image.md) | Pre-installed TYPO3 for demos and evaluation |
 | [`typo3/contrib`](guides/core-contribution.md) | Ready-to-run TYPO3 Core contribution environment |
 
