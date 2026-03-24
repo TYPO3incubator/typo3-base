@@ -27,7 +27,7 @@ Two variants are available:
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM ghcr.io/typo3/base:8.3-nginx AS base
+FROM ghcr.io/typo3incubator/base:8.3-nginx AS base
 FROM composer:2 AS build
 
 WORKDIR /app
@@ -43,7 +43,7 @@ COPY --from=build --chown=typo3:typo3 /app /var/www/html
 ## Usage — FPM Variant (Kubernetes / external web server)
 
 ```dockerfile
-FROM ghcr.io/typo3/base:8.3-fpm
+FROM ghcr.io/typo3incubator/base:8.3-fpm
 COPY --from=build --chown=typo3:typo3 /app /var/www/html
 ```
 

@@ -23,7 +23,7 @@ Create a `Dockerfile` in your TYPO3 project:
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM ghcr.io/typo3/base:8.3-nginx AS base
+FROM ghcr.io/typo3incubator/base:8.3-nginx AS base
 FROM composer:2 AS build
 
 WORKDIR /app
@@ -80,7 +80,7 @@ In `docker-compose.prod.yml`, uncomment the `build` section for the `web` servic
 
 ```yaml
 web:
-  # image: ghcr.io/typo3/base:${PHP_VERSION:-8.3}-nginx
+  # image: ghcr.io/typo3incubator/base:${PHP_VERSION:-8.3}-nginx
   build:
     context: .
     dockerfile: Dockerfile

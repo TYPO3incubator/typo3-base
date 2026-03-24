@@ -35,7 +35,7 @@ ARG PHP_VERSION=8.2
 # -----------------------------------------------------------------------------
 # Stage 1: Install TYPO3 via Composer
 # -----------------------------------------------------------------------------
-FROM ghcr.io/typo3/base:${PHP_VERSION}-nginx AS build
+FROM ghcr.io/typo3incubator/base:${PHP_VERSION}-nginx AS build
 
 LABEL org.opencontainers.image.title="TYPO3 Contribution Image"
 LABEL org.opencontainers.image.description="Ready-to-run TYPO3 main contribution setup with Apache"

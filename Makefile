@@ -4,7 +4,7 @@
 
 PHP_VERSION ?= 8.3
 TYPO3_VERSION ?= 13
-REGISTRY ?= ghcr.io/typo3
+REGISTRY ?= ghcr.io/typo3incubator
 HTTP_PORT ?= 8080
 HTTP_PORT_CONTRIB ?= 28080
 

@@ -63,5 +63,5 @@ The optional `TYPO3_DEMO_CONTENT=introduction` build arg adds the Introduction P
 | `PHP_VERSION` | `8.3` | Both Dockerfiles, Makefile |
 | `TYPO3_VERSION` | `13` | Dockerfile.demo, Makefile |
 | `TYPO3_DEMO_CONTENT` | `""` | Dockerfile.demo (set to `introduction` for intro variant) |
-| `REGISTRY` | `ghcr.io/typo3` | Makefile |
+| `REGISTRY` | `ghcr.io/typo3incubator` | Makefile |
 | `HTTP_PORT` | `8080` | Makefile (demo) |
