@@ -23,7 +23,7 @@ Create a `Dockerfile` in your TYPO3 project:
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM ghcr.io/typo3/base:8.3-nginx AS base
+FROM ghcr.io/typo3incubator/typo3-base:8.3-nginx AS base
 FROM composer:2 AS build
 
 WORKDIR /app
@@ -80,7 +80,7 @@ In `docker-compose.prod.yml`, uncomment the `build` section for the `web` servic
 
 ```yaml
 web:
-  # image: ghcr.io/typo3/base:${PHP_VERSION:-8.3}-nginx
+  # image: ghcr.io/typo3incubator/typo3-base:${PHP_VERSION:-8.3}-nginx
   build:
     context: .
     dockerfile: Dockerfile
@@ -116,14 +116,14 @@ Internet
 
 The production stack uses named volumes for persistent data:
 
-| Volume | Mount Point | Purpose |
-|--------|-------------|---------|
-| `fileadmin` | `/var/www/html/public/fileadmin` | Editor uploads |
-| `typo3var` | `/var/www/html/var` | Cache, logs, sessions |
-| `typo3config` | `/var/www/html/config` | Site configuration |
-| `db-data` | `/var/lib/mysql` | Database files |
-| `redis-data` | `/data` | Redis persistence |
-| `traefik-certs` | `/letsencrypt` | SSL certificates |
+| Volume          | Mount Point                      | Purpose               |
+|-----------------|----------------------------------|-----------------------|
+| `fileadmin`     | `/var/www/html/public/fileadmin` | Editor uploads        |
+| `typo3var`      | `/var/www/html/var`              | Cache, logs, sessions |
+| `typo3config`   | `/var/www/html/config`           | Site configuration    |
+| `db-data`       | `/var/lib/mysql`                 | Database files        |
+| `redis-data`    | `/data`                          | Redis persistence     |
+| `traefik-certs` | `/letsencrypt`                   | SSL certificates      |
 
 ## Environment Variables
 

@@ -10,7 +10,7 @@ Production-ready Docker images for TYPO3 CMS — Debian Bookworm + PHP (Sury pac
 
 | Image | Purpose | Quick Start |
 |-------|---------|-------------|
-| `typo3/base` | Slim runtime — build your project on top | [Base Image Docs](https://typo3incubator.github.io/typo3-base/getting-started/base-image.html) |
+| `typo3incubator/typo3-base` | Slim runtime — build your project on top | [Base Image Docs](https://typo3incubator.github.io/typo3-base/getting-started/base-image.html) |
 | `typo3/demo` | Pre-installed TYPO3 for demos | `docker compose -f docker-compose.demo.yml up` |
 | `typo3/contrib` | TYPO3 Core contribution environment | [Contrib Docs](https://typo3incubator.github.io/typo3-base/guides/core-contribution.html) |
 

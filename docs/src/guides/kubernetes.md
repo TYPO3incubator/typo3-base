@@ -7,7 +7,7 @@
 For Kubernetes deployments, use the **FPM variant** of the base image:
 
 ```dockerfile
-FROM ghcr.io/typo3/base:8.3-fpm
+FROM ghcr.io/typo3incubator/typo3-base:8.3-fpm
 COPY --from=build --chown=typo3:typo3 /app /var/www/html
 ```
 

@@ -4,9 +4,9 @@
 
 | Image | Tag | Supported |
 |-------|-----|-----------|
-| typo3/base | 8.3-nginx | Yes |
-| typo3/base | 8.4-nginx | Yes |
-| typo3/base | 8.2-nginx | Yes |
+| typo3incubator/typo3-base | 8.3-nginx | Yes |
+| typo3incubator/typo3-base | 8.4-nginx | Yes |
+| typo3incubator/typo3-base | 8.2-nginx | Yes |
 | typo3/demo | 13 | Yes |
 | typo3/demo | 14 | Yes |
 
