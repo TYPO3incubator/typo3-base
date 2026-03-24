@@ -1,6 +1,6 @@
 # Base Image
 
-`dkd-dobberkau/base` is a slim runtime image with PHP-FPM and all required PHP extensions for TYPO3. It does **not** contain TYPO3 itself — you build your project-specific image on top of it.
+`typo3/base` is a slim runtime image with PHP-FPM and all required PHP extensions for TYPO3. It does **not** contain TYPO3 itself — you build your project-specific image on top of it.
 
 ## Variants
 
@@ -27,7 +27,7 @@ Two variants are available:
 
 ```dockerfile
 # syntax=docker/dockerfile:1
-FROM ghcr.io/dkd-dobberkau/base:8.3-nginx AS base
+FROM ghcr.io/typo3/base:8.3-nginx AS base
 FROM composer:2 AS build
 
 WORKDIR /app
@@ -43,7 +43,7 @@ COPY --from=build --chown=typo3:typo3 /app /var/www/html
 ## Usage — FPM Variant (Kubernetes / external web server)
 
 ```dockerfile
-FROM ghcr.io/dkd-dobberkau/base:8.3-fpm
+FROM ghcr.io/typo3/base:8.3-fpm
 COPY --from=build --chown=typo3:typo3 /app /var/www/html
 ```
 
@@ -57,8 +57,8 @@ These images **complement** DDEV — they do not compete with it.
 |----------|-----------------|
 | Local development | **DDEV** |
 | Team development | **DDEV** |
-| CI/CD pipelines | **dkd-dobberkau/base** (fpm variant) |
-| Staging & production | **dkd-dobberkau/base** (with your project) |
-| Kubernetes / Cloud | **dkd-dobberkau/base** (fpm variant) + Helm Charts |
-| Demo & evaluation | **dkd-dobberkau/demo** |
-| TYPO3 Core contribution | **dkd-dobberkau/contrib** |
+| CI/CD pipelines | **typo3/base** (fpm variant) |
+| Staging & production | **typo3/base** (with your project) |
+| Kubernetes / Cloud | **typo3/base** (fpm variant) + Helm Charts |
+| Demo & evaluation | **typo3/demo** |
+| TYPO3 Core contribution | **typo3/contrib** |

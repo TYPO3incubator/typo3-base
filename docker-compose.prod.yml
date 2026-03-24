@@ -9,7 +9,7 @@
 #   2.) Rename .env.prod.example to .env and adjust the values
 #   3.) Build your project image based on the TYPO3 base image:
 #
-#       FROM ghcr.io/dkd-dobberkau/base:8.3-nginx
+#       FROM ghcr.io/typo3/base:8.3-nginx
 #       COPY --chown=typo3:typo3 . /var/www/html
 #
 #   4.) Start the stack:
@@ -52,7 +52,7 @@ services:
   # TYPO3 Web — Your project image
   # ---------------------------------------------------------------------------
   web:
-    image: ghcr.io/dkd-dobberkau/base:${PHP_VERSION:-8.3}-nginx
+    image: ghcr.io/typo3/base:${PHP_VERSION:-8.3}-nginx
     # Uncomment below to build from a local Dockerfile instead:
     # build:
     #   context: .

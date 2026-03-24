@@ -58,7 +58,7 @@ This builds base images (nginx + fpm) for PHP 8.2/8.3/8.4, demo images for TYPO3
 |----------|---------|-------------|
 | `PHP_VERSION` | `8.3` | PHP version for base image |
 | `TYPO3_VERSION` | `13` | TYPO3 version for demo image |
-| `REGISTRY` | `ghcr.io/dkd-dobberkau` | Container registry |
+| `REGISTRY` | `ghcr.io/typo3` | Container registry |
 | `HTTP_PORT` | `8080` | Host port for demo |
 
 ## Running the Demo
