@@ -19,7 +19,7 @@ cd typo3-base
 
 ```
 .
-├── Dockerfile.base              # Base image (Debian Bookworm + PHP-FPM)
+├── Dockerfile.base              # Base image (Debian Trixie + PHP-FPM)
 ├── Dockerfile.demo              # Demo image (TYPO3 pre-installed)
 ├── Dockerfile.contrib           # Contrib image (Core development)
 ├── Makefile                     # Build and test commands

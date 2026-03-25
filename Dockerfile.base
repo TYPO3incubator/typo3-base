@@ -1,6 +1,6 @@
 # =============================================================================
 # TYPO3 Official Base Image
-# Debian Bookworm + PHP (Sury) — Production-ready, Composer-based
+# Debian Trixie + PHP (Sury) — Production-ready, Composer-based
 #
 # This image does NOT contain TYPO3 itself. It provides the runtime environment.
 # Build your project image on top of this:
@@ -21,7 +21,7 @@ ARG PHP_VERSION=8.3
 # -----------------------------------------------------------------------------
 # Stage 1: Shared PHP base with all TYPO3-required extensions
 # -----------------------------------------------------------------------------
-FROM debian:bookworm-slim AS php-base
+FROM debian:trixie-slim AS php-base
 
 ARG PHP_VERSION=8.3
 
@@ -51,7 +51,7 @@ RUN set -eux; \
     ; \
     curl -sSL https://packages.sury.org/php/apt.gpg \
         | gpg --dearmor > /usr/share/keyrings/debsuryorg-archive-keyring.gpg; \
-    echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ bookworm main" \
+    echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ trixie main" \
         > /etc/apt/sources.list.d/php-sury.list; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
