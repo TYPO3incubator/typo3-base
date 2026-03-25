@@ -5,7 +5,7 @@
 The build uses a multi-stage Dockerfile with selectable targets:
 
 ```
-debian:bookworm-slim + Sury PHP
+debian:trixie-slim + Sury PHP
          |
     [php-base]  <- shared stage (PHP + extensions + Composer + GraphicsMagick)
      /        \
@@ -38,7 +38,7 @@ Dockerfile.contrib -> typo3/contrib:{PHP_VERSION}
 
 ## Base Image Internals
 
-- **OS**: Debian Bookworm (slim) with Sury PHP repository
+- **OS**: Debian Trixie (slim) with Sury PHP repository
 - **PHP installation**: Pre-built packages via `apt install` (no compilation)
 - Runs as non-root user `typo3` (UID/GID 1000)
 - **Nginx variant**: Supervisor manages Nginx + PHP-FPM, exposes port 80, healthcheck at `/healthz`

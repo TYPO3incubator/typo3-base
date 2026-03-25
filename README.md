@@ -2,7 +2,7 @@
 
 [![Build and Push Docker Images](https://github.com/TYPO3incubator/typo3-base/actions/workflows/build.yml/badge.svg)](https://github.com/TYPO3incubator/typo3-base/actions/workflows/build.yml)
 
-Production-ready Docker images for TYPO3 CMS — Debian Bookworm + PHP (Sury packages). Multi-architecture support: `linux/amd64` + `linux/arm64` (Apple Silicon).
+Production-ready Docker images for TYPO3 CMS — Debian Trixie + PHP (Sury packages). Multi-architecture support: `linux/amd64` + `linux/arm64` (Apple Silicon).
 
 **[Full Documentation](https://typo3incubator.github.io/typo3-base/)**
 
@@ -31,7 +31,7 @@ Admin credentials are randomly generated on first run — check `docker compose 
 ## Architecture
 
 ```
-debian:bookworm-slim + Sury PHP
+debian:trixie-slim + Sury PHP
          |
     [php-base]  <- shared stage (PHP + extensions + Composer + GraphicsMagick)
      /        \

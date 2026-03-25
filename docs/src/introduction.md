@@ -2,7 +2,7 @@
 
 [![Build and Push Docker Images](https://github.com/TYPO3incubator/typo3-base/actions/workflows/build.yml/badge.svg)](https://github.com/TYPO3incubator/typo3-base/actions/workflows/build.yml)
 
-Production-ready Docker images for TYPO3 CMS — Debian Bookworm + PHP (Sury packages).
+Production-ready Docker images for TYPO3 CMS — Debian Trixie + PHP (Sury packages).
 
 Multi-architecture support: `linux/amd64` + `linux/arm64` (Apple Silicon).
 

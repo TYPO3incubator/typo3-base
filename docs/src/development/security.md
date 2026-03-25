@@ -32,7 +32,7 @@ If you discover a security vulnerability in these Docker images, please report i
 - Images run as non-root user `typo3` (UID/GID 1000)
 - Supervisor manages Nginx and PHP-FPM as child processes
 - No SSH or remote shell access included
-- Debian Bookworm slim base reduces attack surface
+- Debian Trixie slim base reduces attack surface
 
 ### Network
 
