@@ -56,6 +56,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
 
     strategy:
       fail-fast: false
@@ -94,6 +96,7 @@ jobs:
             type=sha,prefix=${{ matrix.php-version }}-${{ matrix.variant }}-
 
       - name: Build and push base image
+        id: build
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -109,6 +112,38 @@ jobs:
             type=gha
             type=registry,ref=${{ env.REGISTRY }}/${{ env.BASE_IMAGE_NAME }}:buildcache-${{ matrix.php-version }}-${{ matrix.variant }}
           cache-to: ${{ github.event_name != 'pull_request' && format('type=registry,ref={0}/{1}:buildcache-{2}-{3},mode=max', env.REGISTRY, env.BASE_IMAGE_NAME, matrix.php-version, matrix.variant) || 'type=gha,mode=max' }}
+
+      - name: Install Cosign
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign image with Cosign
+        if: github.event_name != 'pull_request'
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          for tag in ${TAGS}; do
+            cosign sign --yes "${tag}@${DIGEST}"
+          done
+
+      - name: Generate SBOM with Syft
+        if: github.event_name != 'pull_request'
+        uses: anchore/sbom-action@v0
+        with:
+          image: ${{ env.REGISTRY }}/${{ env.BASE_IMAGE_NAME }}@${{ steps.build.outputs.digest }}
+          format: spdx-json
+          output-file: sbom.spdx.json
+
+      - name: Attach SBOM attestation
+        if: github.event_name != 'pull_request'
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          for tag in ${TAGS}; do
+            cosign attest --yes --type spdxjson --predicate sbom.spdx.json "${tag}@${DIGEST}"
+          done
 
   # ---------------------------------------------------------------------------
   # Smoke Tests (Base Image)
@@ -181,6 +216,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
 
     strategy:
       fail-fast: false
@@ -230,6 +267,7 @@ jobs:
             type=raw,value=latest,enable=${{ matrix.typo3-version == '13' && matrix.php-version == '8.3' }}
 
       - name: Build and push demo image
+        id: build
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -246,6 +284,38 @@ jobs:
             type=registry,ref=${{ env.REGISTRY }}/${{ env.DEMO_IMAGE_NAME }}:buildcache-${{ matrix.typo3-version }}-php${{ matrix.php-version }}
           cache-to: ${{ github.event_name != 'pull_request' && format('type=registry,ref={0}/{1}:buildcache-{2}-php{3},mode=max', env.REGISTRY, env.DEMO_IMAGE_NAME, matrix.typo3-version, matrix.php-version) || 'type=gha,mode=max' }}
 
+      - name: Install Cosign
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign image with Cosign
+        if: github.event_name != 'pull_request'
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          for tag in ${TAGS}; do
+            cosign sign --yes "${tag}@${DIGEST}"
+          done
+
+      - name: Generate SBOM with Syft
+        if: github.event_name != 'pull_request'
+        uses: anchore/sbom-action@v0
+        with:
+          image: ${{ env.REGISTRY }}/${{ env.DEMO_IMAGE_NAME }}@${{ steps.build.outputs.digest }}
+          format: spdx-json
+          output-file: sbom.spdx.json
+
+      - name: Attach SBOM attestation
+        if: github.event_name != 'pull_request'
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          for tag in ${TAGS}; do
+            cosign attest --yes --type spdxjson --predicate sbom.spdx.json "${tag}@${DIGEST}"
+          done
+
   # ---------------------------------------------------------------------------
   # Build Demo Image (Introduction Package)
   # Note: typo3/cms-introduction currently supports up to TYPO3 v13 only
@@ -256,6 +326,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
 
     strategy:
       fail-fast: false
@@ -298,6 +370,7 @@ jobs:
             type=raw,value=${{ matrix.typo3-version }}-intro-php${{ matrix.php-version }}
 
       - name: Build and push demo intro image
+        id: build
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -313,6 +386,38 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Install Cosign
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign image with Cosign
+        if: github.event_name != 'pull_request'
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          for tag in ${TAGS}; do
+            cosign sign --yes "${tag}@${DIGEST}"
+          done
+
+      - name: Generate SBOM with Syft
+        if: github.event_name != 'pull_request'
+        uses: anchore/sbom-action@v0
+        with:
+          image: ${{ env.REGISTRY }}/${{ env.DEMO_IMAGE_NAME }}@${{ steps.build.outputs.digest }}
+          format: spdx-json
+          output-file: sbom.spdx.json
+
+      - name: Attach SBOM attestation
+        if: github.event_name != 'pull_request'
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          for tag in ${TAGS}; do
+            cosign attest --yes --type spdxjson --predicate sbom.spdx.json "${tag}@${DIGEST}"
+          done
+
   # ---------------------------------------------------------------------------
   # Build Contrib Image
   # ---------------------------------------------------------------------------
@@ -322,6 +427,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+      attestations: write
 
     strategy:
       fail-fast: false
@@ -359,6 +466,7 @@ jobs:
             type=sha,prefix=${{ matrix.php-version }}-
 
       - name: Build and push contrib image
+        id: build
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -371,6 +479,38 @@ jobs:
             PHP_VERSION=${{ matrix.php-version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Install Cosign
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign image with Cosign
+        if: github.event_name != 'pull_request'
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          for tag in ${TAGS}; do
+            cosign sign --yes "${tag}@${DIGEST}"
+          done
+
+      - name: Generate SBOM with Syft
+        if: github.event_name != 'pull_request'
+        uses: anchore/sbom-action@v0
+        with:
+          image: ${{ env.REGISTRY }}/${{ env.CONTRIB_IMAGE_NAME }}@${{ steps.build.outputs.digest }}
+          format: spdx-json
+          output-file: sbom.spdx.json
+
+      - name: Attach SBOM attestation
+        if: github.event_name != 'pull_request'
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          for tag in ${TAGS}; do
+            cosign attest --yes --type spdxjson --predicate sbom.spdx.json "${tag}@${DIGEST}"
+          done
 
   # ---------------------------------------------------------------------------
   # Integration Tests (Demo Stack)
