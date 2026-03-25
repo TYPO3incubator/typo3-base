@@ -450,9 +450,9 @@ jobs:
           - 'typo3incubator/typo3-base:8.3-fpm'
           - 'typo3incubator/typo3-base:8.3-nginx-slim'
           - 'typo3incubator/typo3-base:8.3-fpm-slim'
-          - 'typo3/demo:13-php8.3'
-          - 'typo3/demo:13-intro-php8.3'
-          - 'typo3/contrib:8.2'
+          - 'typo3incubator/typo3-demo:13-php8.3'
+          - 'typo3incubator/typo3-demo:13-intro-php8.3'
+          - 'typo3incubator/typo3-contrib:8.2'
 
     steps:
       - name: Login to GHCR
