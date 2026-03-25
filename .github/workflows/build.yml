@@ -19,8 +19,8 @@ on:
 env:
   REGISTRY: ghcr.io
   BASE_IMAGE_NAME: typo3incubator/typo3-base
-  DEMO_IMAGE_NAME: typo3/demo
-  CONTRIB_IMAGE_NAME: typo3/contrib
+  DEMO_IMAGE_NAME: typo3incubator/typo3-demo
+  CONTRIB_IMAGE_NAME: typo3incubator/typo3-contrib
 
 jobs:
   # ---------------------------------------------------------------------------
