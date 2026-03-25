@@ -5,7 +5,7 @@
 # Usage:
 #   docker compose -f docker-compose.demo.yml up
 #   # or standalone with external database:
-#   docker run -p 8080:80 -e TYPO3_DB_HOST=... ghcr.io/typo3/demo:13
+#   docker run -p 8080:80 -e TYPO3_DB_HOST=... ghcr.io/typo3incubator/typo3-demo:13
 #
 # =============================================================================
 
