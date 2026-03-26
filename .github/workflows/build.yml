@@ -486,3 +486,20 @@ jobs:
         continue-on-error: true
         with:
           sarif_file: 'trivy-results.sarif'
+          category: 'trivy-${{ matrix.image }}'
+
+      - name: Run Grype vulnerability scanner
+        uses: anchore/scan-action@v6
+        id: grype
+        with:
+          image: ${{ env.REGISTRY }}/${{ matrix.image }}
+          severity-cutoff: high
+          fail-build: false
+
+      - name: Upload Grype scan results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        continue-on-error: true
+        with:
+          sarif_file: ${{ steps.grype.outputs.sarif }}
+          category: 'grype-${{ matrix.image }}'
